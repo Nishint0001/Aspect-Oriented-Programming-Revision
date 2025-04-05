@@ -1,14 +1,17 @@
 package com.NishintGoyal.Aspect.Oriented.Programming.Revision.services.impl;
 
+import com.NishintGoyal.Aspect.Oriented.Programming.Revision.aspect.NishintLogging;
 import com.NishintGoyal.Aspect.Oriented.Programming.Revision.services.DeliveryService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Slf4j
 public class DeliveryServiceImpl implements DeliveryService
 {
     @Override
+    @NishintLogging
     public String orderPackage(Long orderId)
     {
        // log.info("Order Package is called"); without AOP
@@ -27,6 +30,7 @@ public class DeliveryServiceImpl implements DeliveryService
     }
 
     @Override
+    @Transactional
     public String trackPackage(Long orderId)
     {
         // log.info("Track  Package is called"); without AOP
